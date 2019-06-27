@@ -1,0 +1,30 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: CatalogSourceConfig
+metadata:
+  name: installed-federation-pacman
+  namespace: openshift-marketplace
+spec:
+  targetNamespace: pacman
+  packages: federation
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: federation
+  namespace: pacman
+spec:
+  targetNamespaces:
+  - pacman
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: federation
+  namespace: pacman
+spec:
+  channel: alpha
+  name: federation
+  startingCSV: federation.v0.0.10
+  source: installed-federation-pacman
+  sourceNamespace: pacman
