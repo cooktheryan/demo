@@ -9,4 +9,4 @@ resources:
 patchesStrategicMerge:
 - overlays/production/deployment.yaml
 - overlays/dev/deployment.yaml
-- overlays/stage/map.yaml
+- overlays/staging/map.yaml
