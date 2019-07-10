@@ -1,0 +1,10 @@
+namePrefix: development-
+commonLabels:
+  variant: development
+  org: acmeCorporation
+commonAnnotations:
+  note: Hello, I am Development and definitely not production!
+resources:
+- ../../base
+patchesStrategicMerge:
+- deployment.yaml
