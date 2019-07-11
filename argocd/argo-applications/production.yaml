@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2019-07-11T16:31:48Z"
+  generation: 32
+  name: production
+  namespace: argocd
+  resourceVersion: "14295638"
+  selfLink: /apis/argoproj.io/v1alpha1/namespaces/argocd/applications/production
+  uid: 615eb97f-a3f9-11e9-8806-06a26d4a74fa
+spec:
+  destination:
+    namespace: kustomize
+    server: https://api.east-1.sysdeseng.com:6443
+  project: default
+  source:
+    kustomize:
+      namePrefix: production-
+    path: argocd/overlays/production
+    repoURL: git@github.com:cooktheryan/demo.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
