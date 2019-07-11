@@ -1,10 +1,11 @@
-namePrefix: stage-
+namePrefix: staging-
 commonLabels:
-  variant: stage
+  variant: staging
   org: acmeCorporation
 commonAnnotations:
   note: Hello, I am staging!
-resources:
+bases:
 - ../../base
 patchesStrategicMerge:
 - map.yaml
+- deployment.yaml
