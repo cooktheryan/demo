@@ -1,6 +1,10 @@
 commonLabels:
   app: branches 
 
+images:
+- name: quay.io/ifont/pacman-nodejs-app
+  newTag: latest
+
 resources:
 - deployment.yaml
 - secret.yaml
