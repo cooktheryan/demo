@@ -1,24 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2019-07-11T16:33:35Z"
-  generation: 20
   name: dev
-  namespace: argocd
-  resourceVersion: "14294844"
-  selfLink: /apis/argoproj.io/v1alpha1/namespaces/argocd/applications/dev
-  uid: a0fe837c-a3f9-11e9-8806-06a26d4a74fa
 spec:
   destination:
     namespace: kustomize
-    server: https://api.east-1.sysdeseng.com:6443
-  project: default
+    server: 'https://api.east-1.sysdeseng.com:6443'
   source:
+    path: argocd/overlays/dev
+    repoURL: 'git@github.com:cooktheryan/demo.git'
+    targetRevision: HEAD
     kustomize:
       namePrefix: dev-
-    path: argocd/overlays/dev
-    repoURL: git@github.com:cooktheryan/demo.git
-    targetRevision: HEAD
+  project: default
   syncPolicy:
     automated:
       prune: true
