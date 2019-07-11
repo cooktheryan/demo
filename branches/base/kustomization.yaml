@@ -1,0 +1,8 @@
+commonLabels:
+  app: branches 
+
+resources:
+- deployment.yaml
+- secret.yaml
+- roles.yaml
+- serviceaccount.yaml
