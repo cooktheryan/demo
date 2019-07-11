@@ -4,10 +4,8 @@ commonLabels:
   org: acmeCorporation
 commonAnnotations:
   note: Hello, I am staging!
-resources:
-- ../../base/deployment.yaml
-- ../../base/configMap.yaml
-- ../../base/service.yaml
+bases:
+- ../../base
 patchesStrategicMerge:
 - map.yaml
 - deployment.yaml
