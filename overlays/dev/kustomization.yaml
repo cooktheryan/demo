@@ -1,9 +1,9 @@
-namePrefix: staging-
+namePrefix: dev-
 commonLabels:
-  variant: staging
+  variant: dev 
   org: acmeCorporation
 commonAnnotations:
-  note: Hello, I am staging!
+  note: Hello, I am Dev!
 bases:
 - ../../base
 patchesStrategicMerge:
