@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev
+spec:
+  destination:
+    namespace: kustomize
+    server: 'https://api.east-2.sysdeseng.com:6443'
+  source:
+    path: argocd/overlays/dev
+    repoURL: 'git@github.com:cooktheryan/demo.git'
+    targetRevision: HEAD
+    kustomize:
+      namePrefix: dev-
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
