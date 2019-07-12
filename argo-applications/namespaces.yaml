@@ -1,11 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev
+  name: namespaces-east-1
 spec:
   destination:
     namespace: default
     server: 'https://api.east-1.sysdeseng.com:6443'
+  source:
+    path: argocd/namespaces
+    repoURL: 'git@github.com:cooktheryan/demo.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: namespaces-east-2
+spec:
+  destination:
+    namespace: default
+    server: 'https://api.east-2.sysdeseng.com:6443'
   source:
     path: argocd/namespaces
     repoURL: 'git@github.com:cooktheryan/demo.git'
