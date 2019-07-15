@@ -46,7 +46,7 @@ metadata:
     variant: simple-app
   name: simple-app-the-deployment
 spec:
-  replicas: 5
+  replicas: 15
   selector:
     matchLabels:
       deployment: hello
