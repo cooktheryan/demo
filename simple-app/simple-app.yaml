@@ -10,21 +10,21 @@ data:
 kind: ConfigMap
 metadata:
   annotations:
-    note: Hello, I am production!
+    note: Hello, I am simple-app!
   labels:
     org: acmeCorporation
-    variant: production
-  name: production-the-map
+    variant: simple-app
+  name: simple-app-the-map
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    note: Hello, I am production!
+    note: Hello, I am simple-app!
   labels:
     org: acmeCorporation
-    variant: production
-  name: production-the-service
+    variant: simple-app
+  name: simple-app-the-service
 spec:
   ports:
   - port: 8666
@@ -33,33 +33,33 @@ spec:
   selector:
     deployment: hello
     org: acmeCorporation
-    variant: production
+    variant: simple-app
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    note: Hello, I am production!
+    note: Hello, I am simple-app!
   labels:
     org: acmeCorporation
-    variant: production
-  name: production-the-deployment
+    variant: simple-app
+  name: simple-app-the-deployment
 spec:
-  replicas: 20
+  replicas: 5
   selector:
     matchLabels:
       deployment: hello
       org: acmeCorporation
-      variant: production
+      variant: simple-app
   template:
     metadata:
       annotations:
-        note: Hello, I am production!
+        note: Hello, I am simple-app!
       labels:
         deployment: hello
         org: acmeCorporation
-        variant: production
+        variant: simple-app
     spec:
       containers:
       - command:
@@ -71,12 +71,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: altGreeting
-              name: production-the-map
+              name: simple-app-the-map
         - name: ENABLE_RISKY
           valueFrom:
             configMapKeyRef:
               key: enableRisky
-              name: production-the-map
+              name: simple-app-the-map
         image: monopole/hello:1
         name: the-container
         ports:
